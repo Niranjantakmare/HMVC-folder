@@ -47,8 +47,7 @@
     </div>
     <!--formsection end here-->
     <div class="col-12 col-md-12 col-sm-12 footet-top"></div>
-    <div class="col-12 col-md-12 col-sm-12 footersetion"> <button class="btn btn-primary customfullbutton"><a href="<?php echo base_url()."songs-list.html";
-	?>">Request A Song</a></button></div>
+    <div class="col-12 col-md-12 col-sm-12 footersetion"> <button class="btn btn-primary customfullbutton">Request A Song</button> </div>
   </div>
   <!--row end here--> 
 </div>
@@ -57,7 +56,7 @@
 	$( document ).ready(function() {
 		var base_url="<?php echo base_url();?>";
 		$.ajax({
-			url: base_url+'performers/detail/<?php echo $show_id;?>',
+			url: base_url+'performers/detail/<?php echo $performer_id;?>',
 			type: 'GET',
 			headers: {
 				'Client-Service':'<?php echo CLIENT_SECRETE_KEY;?>',

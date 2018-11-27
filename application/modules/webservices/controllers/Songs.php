@@ -30,7 +30,34 @@ class Songs extends MY_Controller {
 		}
 	}
 
-	public function performerSongsList(){
+	public function performerSongsList($pageNo=0,$pageLimit=10,$searchStr=''){
+		$method = $_SERVER['REQUEST_METHOD'];
+		if($method != 'GET' ){
+			json_output(400,array('status' => 400,'message' => 'Bad request.'));
+		} else {
+			$check_auth_client = $this->auth_service->check_auth_client();
+			if($check_auth_client == true){
+		        $ShowId  = $this->input->get_request_header('ShowId', TRUE);
+				$resp = $this->auth_service->get_performer_songslist($ShowId,$pageNo,$pageLimit,$isFavorite=0,$isCompleted=0,$searchStr);
+				json_output(200,$resp);
+			}
+		}
+	}
+	public function performerFavoriteSongsList($pageNo=0,$pageLimit=10,$isFavorite=0){
+		$method = $_SERVER['REQUEST_METHOD'];
+		if($method != 'GET' ){
+			json_output(400,array('status' => 400,'message' => 'Bad request.'));
+		} else {
+			$check_auth_client = $this->auth_service->check_auth_client();
+			if($check_auth_client == true){
+		        $ShowId  = $this->input->get_request_header('ShowId', TRUE);
+				$resp = $this->auth_service->get_performer_songslist($ShowId,$pageNo,$pageLimit,$isFavorite,$isCompleted=0,$searchStr='');
+				json_output(200,$resp);
+			}
+		}
+	}
+	
+	public function performerCompletedSongsList($pageNo=0,$pageLimit=10,$isFavorite=0){
 		$method = $_SERVER['REQUEST_METHOD'];
 		if($method != 'GET' ){
 			json_output(400,array('status' => 400,'message' => 'Bad request.'));
@@ -40,15 +67,13 @@ class Songs extends MY_Controller {
 		        $response = $this->auth_service->auth();
 		        $respStatus = $response['status'];
 		        if($response['status'] == 200){
-					$users_id  = $this->input->get_request_header('User-ID', TRUE);
-					$resp = $this->auth_service->get_performer_songslist($users_id);
+					$show_id  = $this->input->get_request_header('show_id', TRUE);
+					$resp = $this->auth_service->get_performer_songslist($show_id,$pageNo,$pageLimit,$isFavorite,$isCompleted=0,$searchStr='');
 					json_output(200,$resp);
 				}
 			}
 		}
 	}
-
-	
 	public function NewGuid()
     {
         $s        = strtoupper(md5(uniqid(rand(), true)));

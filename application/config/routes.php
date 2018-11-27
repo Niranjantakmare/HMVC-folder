@@ -51,10 +51,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['default_controller'] = 'welcome';
 /********** Rest API Routes  *************/
-$route['auth/login']['post']           = 'webservices/auth/login';
-$route['auth/logout']['post']          = 'webservices/auth/logout';
-$route['performers']['get']          	       = 'webservices/performers';
-$route['performers/songslist']['get']          	       = 'webservices/songs/performerSongsList';
+$route['auth/login']['post']='webservices/auth/login';
+$route['auth/logout']['post']='webservices/auth/logout';
+$route['performers']['get']='webservices/performers';
+$route['performers/songslist']['get'] ='webservices/songs/performerSongsList';
+
+$route['get_tiny_url/(:any)']['get'] ='webservices/performers/check_shorten_url/$1';
+
+$route['performers/favoritesongslist']['get']='webservices/songs/performerFavoriteSongsList';
 
 $route['performers/detail/(:any)']['get']    = 'webservices/performers/detail/$1';
 $route['performers/create']['post']   	   = 'webservices/performers/create';
@@ -69,7 +73,9 @@ $route['login.html'] = "performer/login";
 $route['home.html'] = "performer/home";
 $route['request-songs.html'] = "performer/home/request_songs";
 $route['performer/request-songs.html/(:any)']="performer/home/request_songs/$1";
-$route['song-list.html']="performer/home/songs_list";
+$route['songs-list.html']="performer/home/songs_list";
+$route['tiny_url.html']="performer/home/check_tiny_url";
+$route['request-details.html']="performer/home/request_details";
 
 /********** Finish *************/
 

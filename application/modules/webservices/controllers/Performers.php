@@ -29,6 +29,19 @@ class Performers extends MY_Controller {
 		    }
 		}
 	}
+	
+	public function check_shorten_url($tiny_url){
+		$method = $_SERVER['REQUEST_METHOD'];
+		if($method != 'GET'){
+			json_output(400,array('status' => 400,'message' => 'Bad request.'));
+		} else {
+			$check_auth_client = $this->auth_service->check_auth_client();
+			if($check_auth_client == true){
+				$result = $this->auth_service->check_shorten_url($tiny_url);
+				json_output(200,$result);
+		    }
+		}
+	}
 
 	public function detail($unique_id){
 		$method = $_SERVER['REQUEST_METHOD'];

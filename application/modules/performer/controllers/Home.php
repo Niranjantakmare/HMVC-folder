@@ -24,10 +24,10 @@ class Home extends CI_Controller {
 		$this->load->view('home');
 	}
 	
-	public function request_songs($performer_id)
+	public function request_songs($show_id)
 	{
-		if(!empty($performer_id)){
-		$data['performer_id']=$performer_id;
+		if(!empty($show_id)){
+		$data['show_id']=$show_id;
 		$this->load->view('request_songs',$data);
 		}
 	}
@@ -37,5 +37,45 @@ class Home extends CI_Controller {
 		
 		$this->load->view('songslist');
 	}
+	
+	public function request_details()
+	{
+		
+		$this->load->view('request_details');
+	}
+	
+	
+	
+	public function check_tiny_url($tiny_url){
+		$response = $this->get_web_page("http://socialmention.com/search?q=iphone+apps&f=json&t=microblogs&lang=fr");
+		$resArr = array();
+		$resArr = json_decode($response);
+		echo "<pre>"; print_r($resArr); echo "</pre>";
+		$this->load->view('songslist');
+	}
+	
+		public function get_web_page($url) {
+		$options = array(
+			CURLOPT_RETURNTRANSFER => true,   // return web page
+			CURLOPT_HEADER         => false,  // don't return headers
+			CURLOPT_FOLLOWLOCATION => true,   // follow redirects
+			CURLOPT_MAXREDIRS      => 10,     // stop after 10 redirects
+			CURLOPT_ENCODING       => "",     // handle compressed
+			CURLOPT_USERAGENT      => "test", // name of client
+			CURLOPT_AUTOREFERER    => true,   // set referrer on redirect
+			CURLOPT_CONNECTTIMEOUT => 120,    // time-out on connect
+			CURLOPT_TIMEOUT        => 120,    // time-out on response
+		); 
+
+		$ch = curl_init($url);
+		curl_setopt_array($ch, $options);
+
+		$content  = curl_exec($ch);
+
+		curl_close($ch);
+
+		return $content;
+		}
+
 	
 }

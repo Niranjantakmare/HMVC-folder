@@ -76,7 +76,9 @@ class Auth_Service extends CI_Model {
     }
 
     public function performer_detail_data($id){
-        return $this->db->select('performerID,unique_id,firstname,lastname,message,image')->from('performers')->where('unique_id',$id)->order_by('performerID','desc')->get()->row();
+		$sql="SELECT ps.performerID,ps.firstname,ps.lastname,ps.message,ps.image,sh.unique_id,sh.showname,sh.showDate,sh.showDescription  FROM  shows sh,performers ps WHERE sh.performerID = ps.performerID and sh.status!='E' and sh.unique_id='$id'";
+			$result = $this->db->query($sql);
+        return $result->row();
     }
 
     public function performer_create_data($data){
@@ -95,9 +97,51 @@ class Auth_Service extends CI_Model {
     }
 
 
-	public function get_performer_songslist($unique_id){
-		$result = $this->db->query("SELECT sg.songID,sg.name,sg.artist,ps.is_favorite FROM `performers` pf, 	performersongs ps,songs sg  WHERE  	pf.performerID=ps.performerID and ps.songID=sg.songID and pf.unique_id='$unique_id' order by sg.songID");
-		return $result->result_array();
+	public function get_performer_songslist($unique_id,$pageNo,$pageLimit,$isFavorite,$isCompleted,$searchStr){
+		 $sql="SELECT sg.songID,sg.name,sg.artist,ps.is_favorite FROM shows sh,performersongs ps,songs sg WHERE sh.performerID=ps.performerID and ps.songID=sg.songID and sh.unique_id='$unique_id'";
+		 
+		$conditions="";
+		if($isFavorite==1){
+			$conditions=" and ps.is_favorite=1";
+		}
+
+		$searchStr = urldecode($searchStr);
+		if(!empty($searchStr)){
+			$searchStr=trim($searchStr);
+			$searchStrArr=explode(" ",$searchStr);
+			$searchCondition="";
+			
+			foreach($searchStrArr as $value){
+			$searchCondition.="( sg.name Like '%$value%' ||  sg.artist Like '%$value%' ) and ";
+			}
+			$searchCondition=trim($searchCondition,"and ");
+			$conditions.=" and ".$searchCondition;
+		}
+		$conditions=$conditions." order by sg.songID";
+		
+		$queryForRowCount=$sql." ".$conditions;
+		$result = $this->db->query($queryForRowCount);
+		$row_count=$result->num_rows();
+		
+		$query=$sql." ".$conditions." Limit $pageNo, $pageLimit";
+		$result = $this->db->query($query);
+		$result_data=$result->result_array();
+		
+		$response=array('pageNo'=>$pageNo,
+			'total_count'=>$row_count,
+			'limit'=>$pageLimit,
+			'query'=>$query,
+			'data'=>$result_data
+		);
+		return $response;
+	}
 	
+	public function check_shorten_url($tiny_url_code){
+		 $check_exits  = $this->db->select('is_expired,actual_url')->from('shorten_urls')->where('short_url_code',$tiny_url_code)->get()->row();
+        if($check_exits == ""){
+			return json_output(401,array('status' => 401,'message' => 'Unauthorized.'));
+        } else {
+		print_r($check_exits);
+		}
 	}
 }
