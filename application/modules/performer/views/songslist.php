@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/style.css"/>
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/bootstrap/font-awesome.min.css"/>
@@ -42,7 +42,7 @@
 </style>
 </head>
 
-<body>
+<body class="songslist">
 
   <div class="container">
          <div class="row">
@@ -84,7 +84,7 @@
                               <div class="songsinner">
                                  <div class="search-container">
                                     <form action="/action_page.php">
-                                       <input type="text" id="searchStr" placeholder="Everyday" name="search">
+                                       <input type="text" id="searchStr" placeholder="Search" name="search">
                                        <button type="submit"><i class="fa fa-search"></i></button>
                                     </form>
                                  </div>
@@ -96,7 +96,7 @@
 							  <input type="hidden" id="CompletedSongstotalCount" value="0" name="totalCount">
 							  <input type="hidden" id="favoriteSongtotalCount" value="0" name="totalCount">
                            </div>
-						  <div class=" table-wrapper-scroll-y">
+						  <div class="table-wrapper-scroll-y">
                            <table  class="tableSection table table-striped">
 							 <tbody id="searchSongsTable">
 								<div id="loadingSearchSongsInnerDiv" class="ajax_table_load text-center" >
@@ -112,7 +112,7 @@
 				 </div>
 				<div role="tabpanel" class="tab-pane "  id="completeSongsList"> 
 				    <span class="tab-content-subtitle">List of completed songs the performer knows</span>
-					 <div  style="        max-height: 360px;" class=" table-wrapper-scroll-y">
+					 <div class="table-wrapper-scroll-completed_songs">
 					<table  class="tableSection table table-striped">
 						<tbody id="completedSongsListTable">
 						  <div  class="ajax_table_load text-center loadingCompletedSongs" >
@@ -129,7 +129,7 @@
 				</div>
 				<div role="tabpanel" class="tab-pane" id="favoriteSongsList"> 
 				    <span class="tab-content-subtitle">List of favorite songs the performer knows</span>
-					 <div style="        max-height: 360px;" class=" table-wrapper-scroll-y">
+					 <div class="table-wrapper-scroll-favorite">
 					<table  class="tableSection table table-striped">
 						<tbody id="favoriteSongsListTable">
 							<div  class="ajax_table_load text-center loadingFavoritesSongs" >
@@ -156,9 +156,9 @@
 	var limit=10;
 	var searchString=$.trim($("#searchStr").val());
 	if(searchString!=""){
-			var URL="http://localhost:8080/CodeIgniter-HMVC-master/webservices/songs/performerSongsList/"+page+"/10/";
+			var URL="<?php echo base_url(); ?>index.php/webservices/songs/performerSongsList/"+page+"/10/";
 	}else{
-		var URL="http://localhost:8080/CodeIgniter-HMVC-master/webservices/songs/performerSongsList/"+page+"/10/";
+		var URL="<?php echo base_url(); ?>index.php/webservices/songs/performerSongsList/"+page+"/10/";
 	}
 	loadMoreData(URL,1);
 	page++;
@@ -168,7 +168,7 @@
 			var noOfCompletedSongs = $("#noOfCompletedSongs").val();
 			var totalItems=noOfCompletedSongs*limit;
 			if (CompletedSongstotalCount <= totalItems) {
-				var URL="http://localhost:8080/CodeIgniter-HMVC-master/webservices/songs/performerSongsList/"+noOfCompletedSongs+"/10/";
+				var URL="<?php echo base_url(); ?>index.php/webservices/songs/performerSongsList/"+noOfCompletedSongs+"/10/";
 				loadMoreData(URL,1);
 			}
 	});
@@ -177,7 +177,7 @@
 			var noOfSongFav = $("#noOfSongFav").val();
 			var totalItems=noOfSongFav*limit;
 			if (favoriteSongtotalCount <= totalItems) {
-				var URL="http://localhost:8080/CodeIgniter-HMVC-master/webservices/songs/performerFavoriteSongsList/"+noOfSongFav+"/10/";
+				var URL="<?php echo base_url(); ?>index.php/webservices/songs/performerFavoriteSongsList/"+noOfSongFav+"/10/";
 				loadMoreData(URL,1);
 			}
 		
@@ -199,9 +199,9 @@
 					$("#noOfSong").val(page);
 					var searchString=$.trim($("#searchStr").val());
 					if(searchString!=""){
-							var URL="http://localhost:8080/CodeIgniter-HMVC-master/webservices/songs/performerSongsList/"+totalItems+"/10/".searchString;
+							var URL="<?php echo base_url(); ?>index.php/webservices/songs/performerSongsList/"+totalItems+"/10/".searchString;
 					}else{
-						var URL="http://localhost:8080/CodeIgniter-HMVC-master/webservices/songs/performerSongsList/"+totalItems+"/10/";
+						var URL="<?php echo base_url(); ?>index.php/webservices/songs/performerSongsList/"+totalItems+"/10/";
 					}
 					loadMoreData(URL,0);
 				}
@@ -217,7 +217,7 @@
 					$(".loadingCompletedSongs").show();
 					noOfSongFav++;
 					$("#noOfSongFav").val(noOfSongFav);
-					var URL="http://localhost:8080/CodeIgniter-HMVC-master/webservices/songs/performerSongsList/"+totalItems+"/10/";
+					var URL="<?php echo base_url(); ?>index.php/webservices/songs/performerSongsList/"+totalItems+"/10/";
 					loadMoreData(URL,0);
 				}
 			}
@@ -229,7 +229,7 @@
 			if (favtotalCount > totalItems) {
 				if($(window).scrollTop() + $(window).height() >= $(document).height()) {
 					$(".loadingFavoritesSongs").hide();
-					var URL="http://localhost:8080/CodeIgniter-HMVC-master/webservices/songs/performerFavoriteSongsList/"+totalItems+"/10/";
+					var URL="<?php echo base_url(); ?>index.php/webservices/songs/performerFavoriteSongsList/"+totalItems+"/10/";
 				
 					loadMoreData(URL,0);
 				}
@@ -241,7 +241,7 @@
 			var page = 0;
 			var limit=10;
 			var searchString=$.trim($("#searchStr").val());
-			var URL="http://localhost:8080/CodeIgniter-HMVC-master/webservices/songs/performerSongsList/"+page+"/10/"+searchString;
+			var URL="<?php echo base_url(); ?>index.php/webservices/songs/performerSongsList/"+page+"/10/"+searchString;
 			loadMoreData(URL,1);
 			page++;
 	});
