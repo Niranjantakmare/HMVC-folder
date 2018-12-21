@@ -1,0 +1,256 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" type="text/css" href="style.css"/>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
+      <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   </head>
+   <body>
+      <div class="container">
+         <div class="row">
+            <div class="col-12 col-md-12 col-sm-12 custommaintopsectioninner">
+               <nav class="navbar navbar-inverse customnav">
+                  <div class="navbar-header customheader">
+                     <button type="button" class="navbar-toggle customtoggle" data-toggle="collapse" data-target="#myNavbar">
+                     <span class="icon-bar"></span>
+                     <span class="icon-bar"></span>
+                     <span class="icon-bar"></span>                        
+                     </button>
+                     <a class="navbar-brand custombrand" href="#">Total Requests Live</a>
+                  </div>
+                  <div class="collapse navbar-collapse" id="myNavbar">
+                     <!-- <ul class="nav navbar-nav">
+                        <li class="active"><a href="#"></a></li>
+                        <li><a href="#"></a></li>
+                        <li><a href="#"></a></li>
+                        </ul>-->
+                  </div>
+               </nav>
+            </div>
+            <!--col-12 col-md-12 col-sm-6 custommaintopsection end here-->
+            <div class="col-12 col-md-12 col-sm-12 tabbingmainsection">
+               <!-- Nav tabs -->
+               <div class="card">
+                  <ul class="nav nav-tabs" role="tablist">
+                     <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Search</a></li>
+                     <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Complete List</a></li>
+                     <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Favorite Songs</a></li>
+                  </ul>
+                  <!-- Tab panes -->
+                  <div class="tab-content">
+				  <span class="tab-content-subtitle">List of all songs the performer knows</span>
+				  <div role="tabpanel" class="tab-pane" id="messages">
+                        <div class ="col-12 col-md-12 col-sm-12 songscustommain">
+                           <div class ="songsmainsection">
+                              <div class="songsinner">
+                                 <div class="search-container">
+                                    <form action="/action_page.php">
+                                       <input type="text" placeholder="Everyday" name="search">
+                                       <button type="submit"><i class="fa fa-search"></i></button>
+                                    </form>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="showingsection">
+                              <span>Showing 3 of 3 results</span>
+                           </div>
+                           <!--<div class="innersonglist">
+                              <div class ="songsmainsecondsection">
+                               <div class="musicicoonsection">
+                               <img src="images/02-Search-Song.png"/>
+                               </div>
+                               <div class="musicicoonsectiontitle">
+                               <span>Everyday I have the Blues</span>
+                               <span class="musicsubtitle">Elmore Jones</span>
+                               </div>
+                               
+                               </div>
+                               
+                               <div class="songsmainsecondsection">
+                               <div class="musicicoonsection">
+                               <img src="images/02-Search-Song.png"/>
+                               </div>
+                               <div class="musicicoonsectiontitle">
+                               <span>Everyday is Sunshine</span>
+                               <span class="musicsubtitle">John Doe</span>
+                               </div>
+                               
+                               </div>
+                               
+                               <div class="songsmainsecondsection">
+                               <div class="musicicoonsection">
+                               <img src="images/02-Search-Song.png"/>
+                               </div>
+                               <div class="musicicoonsectiontitle">
+                               <span>Everyday I Love You</span>
+                               <span class="musicsubtitle">Boyzone</span>
+                               </div>
+                               
+                               </div>
+                              </div> -->
+                           <table class="table table-striped">
+                              <tbody>
+                                 <tr>
+                                    <td><span>Everyday I have the Blues</span>
+                                       <span class="musicsubtitle">Elmore Jones</span>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td><span>Everyday is Sunshine</span>
+                                       <span class="musicsubtitle">John Doe</span>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td><span>Everyday I Love You</span>
+                                       <span class="musicsubtitle">Boyzone</span>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                     </div>
+				  
+				  
+				  
+                     <div role="tabpanel" class="tab-pane active" id="home">
+                        <table class="table table-striped">
+                           <tbody>
+                              <tr>
+                                 <td><span>Baby One More Time</span>
+                                    <span class="musicsubtitle">Britney Spears</span>
+                                 </td>
+                              </tr>
+                              <tr>
+                                 <td><span>Black or White</span>
+                                    <span class="musicsubtitle">Micheal Jackson</span>
+                                 </td>
+                              </tr>
+                              <tr>
+                                 <td><span>Everyday I Love You</span>
+                                    <span class="musicsubtitle">Boyzone</span>
+                                 </td>
+                              </tr>
+							  <tr>
+                                 <td><span>See You Again</span>
+                                    <span class="musicsubtitle">Wiz Khalifa</span>
+                                 </td>
+                              </tr>
+							  <tr>
+                                 <td><span>Sugar</span>
+                                    <span class="musicsubtitle">Maroon 5</span>
+                                 </td>
+                              </tr>
+							  <tr>
+                                 <td><span>Style</span>
+                                    <span class="musicsubtitle">Taylor Swift</span>
+                                 </td>
+                              </tr>
+							  <tr>
+                                 <td><span>Talking Body</span>
+                                    <span class="musicsubtitle">Love Lo</span>
+                                 </td>
+                              </tr>
+							  <tr>
+                                 <td><span>See You Again</span>
+                                    <span class="musicsubtitle">Wiz Khalifa</span>
+                                 </td>
+                              </tr>
+							  <tr>
+                                 <td><span>Sugar</span>
+                                    <span class="musicsubtitle">Maroon 5</span>
+                                 </td>
+                              </tr>
+							  <tr>
+                                 <td><span>Style</span>
+                                    <span class="musicsubtitle">Taylor Swift</span>
+                                 </td>
+                              </tr>
+							  
+                           </tbody>
+                        </table>
+                     </div>
+                     <div role="tabpanel" class="tab-pane" id="profile">
+                        <table class="table table-striped">
+                           <tbody>
+                              <tr>
+                                 <td><span>Baby One More Time</span>
+                                    <span class="musicsubtitle">Britney Spears</span>
+                                 </td>
+                              </tr>
+                              <tr>
+                                 <td><span>Black or White</span>
+                                    <span class="musicsubtitle">Micheal Jackson</span>
+                                 </td>
+                              </tr>
+                              <tr>
+                                 <td><span>Everyday I Love You</span>
+                                    <span class="musicsubtitle">Boyzone</span>
+                                 </td>
+                              </tr>
+							  <tr>
+                                 <td><span>See You Again</span>
+                                    <span class="musicsubtitle">Wiz Khalifa</span>
+                                 </td>
+                              </tr>
+							  <tr>
+                                 <td><span>Sugar</span>
+                                    <span class="musicsubtitle">Maroon 5</span>
+                                 </td>
+                              </tr>
+							  <tr>
+                                 <td><span>Style</span>
+                                    <span class="musicsubtitle">Taylor Swift</span>
+                                 </td>
+                              </tr>
+							  <tr>
+                                 <td><span>Talking Body</span>
+                                    <span class="musicsubtitle">Love Lo</span>
+                                 </td>
+                              </tr>
+							  <tr>
+                                 <td><span>See You Again</span>
+                                    <span class="musicsubtitle">Wiz Khalifa</span>
+                                 </td>
+                              </tr>
+							  <tr>
+                                 <td><span>Sugar</span>
+                                    <span class="musicsubtitle">Maroon 5</span>
+                                 </td>
+                              </tr>
+							  <tr>
+                                 <td><span>Style</span>
+                                    <span class="musicsubtitle">Taylor Swift</span>
+                                 </td>
+                              </tr>
+							  <tr>
+                                 <td><span>See You Again</span>
+                                    <span class="musicsubtitle">Wiz Khalifa</span>
+                                 </td>
+                              </tr>
+							  <tr>
+                                 <td><span>Sugar</span>
+                                    <span class="musicsubtitle">Maroon 5</span>
+                                 </td>
+                              </tr>
+							  <tr>
+                                 <td><span>Style</span>
+                                    <span class="musicsubtitle">Taylor Swift</span>
+                                 </td>
+                              </tr>
+							  
+                           </tbody>
+                        </table>
+                     </div>
+                     
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </body>
+</html>

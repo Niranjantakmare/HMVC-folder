@@ -1,0 +1,27 @@
+
+@font-face {
+  font-family: 'SegoeUI';
+  src: url('SegoeUI.eot') format('embedded-opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SegoeUI';
+  src:  url() format('woff'), url('SegoeUI.ttf')  format('truetype'), url('SegoeUI.svg#SegoeUI') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+
+
+@font-face {
+  font-family: 'SegoeUI';
+  src: url('SegoeUI.eot') format('embedded-opentype');
+  src:  url('SegoeUI.woff') format('woff'), 
+  url('SegoeUI.ttf')  format('truetype'), 
+  url('SegoeUI.svg#SegoeUI') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
