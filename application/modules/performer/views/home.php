@@ -35,8 +35,8 @@
 	function logOut(){
 		var base_url="<?php echo base_url();?>";
 		sessionStorage.removeItem('token');
-		sessionStorage.removeItem('id');
-		window.location.href = base_url+"login.html";
+		sessionStorage.removeItem('user_id');
+		window.location.href = base_url+"index.php/login.html";
 	}
 </script>
 

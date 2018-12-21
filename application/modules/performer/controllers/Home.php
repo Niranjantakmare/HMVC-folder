@@ -38,10 +38,49 @@ class Home extends CI_Controller {
 		$this->load->view('songslist');
 	}
 	
+	public function performer_shows()
+	{
+		
+		$this->load->view('my-show');
+	}
+	
+	public function performer_show_detail()
+	{
+		
+		$this->load->view('show_details_new');
+	}
+	
+	public function forgot_password_page()
+	{
+		
+		$this->load->view('forgot-password');
+	}
 	public function request_details()
 	{
 		
 		$this->load->view('request_details');
+	}
+	public function payment_success_page()
+	{
+		
+		$this->load->view('payment-success');
+	}
+	
+	public function mySongList()
+	{
+		
+		$this->load->view('mySongList');
+	}
+	
+	public function AllSongList()
+	{
+		
+		$this->load->view('allSongList');
+	}
+	
+	
+	public function create_profile(){
+		$this->load->view('create_profile');
 	}
 	
 	

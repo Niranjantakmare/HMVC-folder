@@ -27,7 +27,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 | There are three reserved routes:
 |
-|	$route['default_controller'] = 'welcome';
+|	$route['default_controller'] = 'performer/login';
 |
 | This route indicates which controller class should be loaded if the
 | URI contains no data. In the above example, the "welcome" class
@@ -49,7 +49,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'welcome';
+$route['default_controller'] = 'performer/login';
 /********** Rest API Routes  *************/
 $route['auth/login']['post']='webservices/auth/login';
 $route['auth/logout']['post']='webservices/auth/logout';
@@ -64,18 +64,30 @@ $route['performers/detail/(:any)']['get']    = 'webservices/performers/detail/$1
 $route['performers/create']['post']   	   = 'webservices/performers/create';
 $route['performers/update/(:num)']['put']    = 'webservices/performers/update/$1';
 $route['performers/delete/(:num)']['delete'] = 'webservices/performers/delete/$1';
+
+$route['create-request-song']['post']   	   = 'webservices/request/createRequest';
+$route['create-request-song']['post']   	   = 'webservices/request/getAllCurrentShowRequests';
+
 /********** Finish *************/
 
 
 /********** Web Application Routes *************/
 
-$route['login.html'] = "performer/login";
+$route['login'] = "performer/login";
+$route['forgotpassword'] = "performer/home/forgot_password_page";
 $route['home.html'] = "performer/home";
-$route['request-songs.html'] = "performer/home/request_songs";
-$route['performer/request-songs.html/(:any)']="performer/home/request_songs/$1";
-$route['songs-list.html']="performer/home/songs_list";
+$route['home/(:any)']="performer/home/request_songs/$1";
+$route['requestsongs']="performer/home/songs_list";
 $route['tiny_url.html']="performer/home/check_tiny_url";
-$route['request-details.html']="performer/home/request_details";
+$route['requestdetails']="performer/home/request_details";
+$route['paymentsuccess']="performer/home/payment_success_page";
+$route['createprofile']="performer/home/create_profile";
+$route['myshow']="performer/home/performer_shows";
+$route['showdetails']="performer/home/performer_show_detail";
+
+$route['mysonglist']="performer/home/mySongList";
+
+$route['songList']="performer/home/AllSongList";
 
 /********** Finish *************/
 

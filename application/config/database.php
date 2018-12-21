@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => '',
-	'database' => 'trl',
+	'hostname' => '198.71.227.84',
+	'username' => 'TRLUsr2018',
+	'password' => 'trl@2018',
+	'database' => 'TRLDB',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

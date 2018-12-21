@@ -2,13 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/style.css"/>
-<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/bootstrap/bootstrap.min.css"/>
+<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/style.css"/>
+<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/bootstrap/font-awesome.min.css"/>
-<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/bootstrap/bootstrap.min.js"></script>
+
+<script src="<?php echo base_url(); ?>assets/js/jquery.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/bootstrap.min.js"></script>
 <title>Request Songs</title>
 </head>
 <style>
@@ -46,9 +47,16 @@
 	 <div class="performerdetails">Loremipsumdolor sit amet, consectetur adiplising elit. Nunc maximus, nulla ut cmmodosagittis, sapien dui mattis dui, non pulvinar loremfelis nec erac...</div>
     </div>
     <!--formsection end here-->
+	<div class="main-footer">
     <div class="col-12 col-md-12 col-sm-12 footet-top"></div>
-    <div class="col-12 col-md-12 col-sm-12 footersetion"> <button class="btn btn-primary customfullbutton"><a href="<?php echo base_url()."songs-list.html";
-	?>">Request A Song</a></button></div>
+    <div class="col-12 col-md-12 col-sm-12 footersetion"><a href="<?php echo base_url()."index.php/requestsongs";
+	?>"><button class="btn btn-primary customfullbutton">Request A Song</button></a></div>
+	<!-- <div class="col-12 col-md-12 col-sm-12 footet-top"></div>
+    <div class="col-12 col-md-12 col-sm-12 footersetion"> <button class="btn btn-primary customfullbutton">Request A Song</button> </div>-->
+	</div>
+	
+	
+	
   </div>
   <!--row end here--> 
 </div>
@@ -57,7 +65,7 @@
 	$( document ).ready(function() {
 		var base_url="<?php echo base_url();?>";
 		$.ajax({
-			url: base_url+'performers/detail/<?php echo $show_id;?>',
+			url: base_url+'index.php/performers/detail/<?php echo $show_id;?>',
 			type: 'GET',
 			headers: {
 				'Client-Service':'<?php echo CLIENT_SECRETE_KEY;?>',

@@ -17,9 +17,8 @@ class Auth extends MY_Controller {
 	{
 		header('Access-Control-Allow-Origin: *');
 		header('Access-Control-Allow-Methods: POST, GET, OPTIONS, DELETE, PUT');
-		header('Access-Control-Allow-Headers: X-Requested-With, Content-Type, 
-		Origin, Authorization, Accept, Client-Security-Token, Accept-
-		Encoding, X-Auth-Token, content-type');
+		//header('Access-Control-Allow-Headers: X-Requested-With, Content-Type, Origin, Authorization, Accept, Client-Security-Token, Accept-
+		//Encoding, X-Auth-Token, content-type');
 		$method = $_SERVER["REQUEST_METHOD"];
 		if($method != 'POST'){
 			json_output(400,array('status' => 400,'message' => 'Bad request.'));
